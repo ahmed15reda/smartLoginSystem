@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            if (localStorage.getItem("userName") == null) {
+                var home = document.getElementById("home");
+                home.classList.add('add');
+                home.innerHTML = `
+                <div class='show' >You Should Login First.<a href="index.html">Login</a></div>
+                `;
+            } else {
+                var welcome = document.getElementById("username");
+                var name = JSON.parse(localStorage.getItem("userName"));
+                welcome.innerHTML += "Welcome " + name;
+            }
+
+        }
+    </script>
+</head>
+
+<body id="home">
+    <nav class="navbar navbar-expand-lg navbar-dark group">
+        <div class="container">
+            <a class="navbar-brand" href="#">SMART LOGIN</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a onclick="logout()" class="nav-link btn btn-outline-info " href="index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container text-center h-100 d-flex align-items-center justify-content-center">
+        <div class="group w-75 p-5">
+            <h1 id="username"></h1>
+        </div>
+    </div>
+
+</body>
+
+</html>
